@@ -1,0 +1,30 @@
+This tutorial demonstrates how to conduct a beta series correlation analysis on single-subject fMRI data. A beta series correlation is a measure of functional connectivity between two ROIs or voxels. 
+
+This tutorial requires a working version of Matlab as well as Vistasoft software, available for freefrom here: https://github.com/vistalab/vistasoft
+
+The main script of this tutorial is beta_series_main.m. That script goes through the following steps:
+
+1) generate regressor time series
+2) construct glm
+3) fit model to sample data
+4) correlate ROI-voxel beta series to create a voxelwise map of correlation values
+5) visualize results 
+
+
+ABOUT THE SAMPLE DATA & TASK:
+The analysis is conducted on sample data from a single subject performing an intertemporal choice task. For each trial, the subject had to indicate which of two options she preferred, one available immediately and the other available at some future time. In half the trials, the options involved monetary gains, and the other half involved monetary losses. Thus beta series are generated for 2 conditions of interest: "gain" and "loss". 
+
+
+The data folder contains the following files: 
+
+run1.nii.gz & run2.nii.gz - pre-processed functional data for 2 scan runs over which the task was performed
+
+gain/loss_onsets - txt files that contain onset times for events of interest (i.e. trial start times)
+
+mask.nii.gz - 3d volume of 1s and 0s for voxels in and outside of the brain, respectively (note: this is REALLY rough)
+
+	mPFC_roi.nii.gz - roi mask of a cluster in the mPFC more activated by gains vs losses. This is used as the seed ROI for the beta series correlations. 
+
+	roi_ts - text file with the averaged time series of voxels within the mPFC ROI mask. 
+
+	t1.nii.gz - t1-weighted images aligned with functional data; used for visualizing results.
